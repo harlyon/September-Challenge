@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './App.css';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
-import Main from './Pages/Main';
-import About from './Pages/About';
-import Contact from './Pages/Contact';
-import Store from './Pages/Store';
+import "./App.css";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import Main from "./containers/Main";
+import About from "./containers/About";
+import Contact from "./containers/Contact";
+import Store from "./containers/Store";
+import SingleProduct from "./containers/SingleProduct";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/store" component={Store} />
+          <Route exact path="/item/:id" component={SingleProduct} />
         </Router>
       <Footer />
     </div>
