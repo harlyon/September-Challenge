@@ -8,7 +8,25 @@ class SingleProduct extends Component {
     // user: {}
   };
 
+  componentDidMount() {
+    const ref = firebase
+    .firestore()
+    .collection("items")
+    .doc(this.props.match.params.id);
+    ref.get().then(doc => {
+      if (doc.exists) {
+        this.setState({
+          item: doc.data(),
+          key: doc.id
+        });
+      } else {
+        console.log("No such document!");
+      }
+    });
+  }
+
 render(){
+  const { item } = this.state
   return (
     <div>
       <section className="section pb-0">
@@ -31,60 +49,6 @@ render(){
               <form className="mb-5 mb-md-0">
                 <div className="form-row">
                   <div className="col-12">
-                    <label>
-                      Select size:
-                    </label>
-                  </div>
-                </div>
-                <div className="form-row">
-                  <div className="col-6">
-                    {/* Size */}
-                    <div className="extended-radio">
-                      <input className="extended-radio-input" id="sizeInputOne" type="radio" name="sizeInput" defaultChecked />
-                      <label className="extended-radio-label text-xs" htmlFor="sizeInputOne">
-                        M 3 / W 5
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    {/* Size */}
-                    <div className="extended-radio">
-                      <input className="extended-radio-input" id="sizeInputTwo" type="radio" name="sizeInput" />
-                      <label className="extended-radio-label text-xs" htmlFor="sizeInputTwo">
-                        M 3.5 / W 5.5
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    {/* Size */}
-                    <div className="extended-radio">
-                      <input className="extended-radio-input" id="sizeInputThree" type="radio" name="sizeInput" />
-                      <label className="extended-radio-label text-xs" htmlFor="sizeInputThree">
-                        M 4 / W 6
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    {/* Size */}
-                    <div className="extended-radio">
-                      <input className="extended-radio-input" id="sizeInputFour" type="radio" name="sizeInput" />
-                      <label className="extended-radio-label text-xs" htmlFor="sizeInputFour">
-                        M 4.5 / W 6.5
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    {/* Size */}
-                    <div className="extended-radio">
-                      <input className="extended-radio-input" id="sizeInputFive" type="radio" name="sizeInput" />
-                      <label className="extended-radio-label text-xs" htmlFor="sizeInputFive">
-                        M 5 / W 7
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div className="form-row">
-                  <div className="col-12">
                     {/* Button */}
                     <button className="btn btn-outline-primary btn-block mt-3">
                       Add to cart
@@ -95,7 +59,7 @@ render(){
             </div>
             <div className="col-12 col-md-8 order-md-1">
               {/* Image */}
-              <img src="http://html.lionode.com/darklook/images/product/product1.jpg" alt="..." className="img-fluid mb-5" />
+              <img src="https://simpleqode.bitbucket.io/incline/assets/img/83.jpg" alt="..." className="img-fluid mb-5" />
             </div>
           </div>
         </div>

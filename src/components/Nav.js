@@ -84,7 +84,7 @@ const Nav = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="/" className="btn btn-outline-secondary animate">
+                <a href="/dashboard" className="btn btn-outline-secondary animate">
                   Sign In
                 </a>
               </li>

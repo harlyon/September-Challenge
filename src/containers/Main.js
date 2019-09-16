@@ -32,7 +32,7 @@ const Main = () => {
                   Dicta itaque ad iusto perspiciatis eum alias quibusdam, odit id pariatur repudiandae ipsum, nostrum nisi.
                 </p>
                 {/* Button */}
-                <a href="#!" className="btn btn-outline-primary animate" data-toggle="animation" data-animation="fadeUp" data-animation-order={3} data-animation-trigger="load">
+                <a href="/store" className="btn btn-outline-primary animate" data-toggle="animation" data-animation="fadeUp" data-animation-order={3} data-animation-trigger="load">
                   Go to store <i className="fas fa-arrow-right ml-2" />
                 </a>
               </div>

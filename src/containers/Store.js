@@ -9,14 +9,10 @@ const image = {
 };
 
 class Store extends Component {
-  constructor(props) {
-    super(props);
-    this.ref = firebase.firestore().collection("items");
-    this.unsubscribe = null;
-    this.state = {
+    state = {
       items: []
     };
-  }
+
 
   allItems = querySnapshot => {
     const items = [];
@@ -31,11 +27,10 @@ class Store extends Component {
       })
     })
     this.setState({ items });
-    console.log(items)
   }
 
   componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.allItems)
+    firebase.firestore().collection("items").onSnapshot(this.allItems)
   }
 
 render(){
@@ -54,21 +49,21 @@ render(){
             </div>
         </div>
     </section>
-    <div className="section">
+    <div className="section bg-light">
     <div className="bg-triangle bg-triangle-dark bg-triangle-left bg-triangle-top" />
     <div className="bg-triangle bg-triangle-dark bg-triangle-right bg-triangle-top" />
         <div className="container">
             <div className="row">
-                {items.map((property) =>
-                <div key={property.key} className="col-12 col-md-6 col-lg-4">
+                {items.map((item) =>
+                <div key={item.key} className="col-12 col-md-6 col-lg-4">
                     <div className="position-relative">
-                        <Link className="card border-3 mb-3" to={`/item/${property.key}`}>
-                            <img src="http://html.lionode.com/darklook/images/product/product1.jpg" alt="..." className="card-img" />
+                        <Link className="card border-3 mb-3" to={`/item/${item.key}`}>
+                            <img src="https://simpleqode.bitbucket.io/incline/assets/img/83.jpg" alt="..." className="card-img" />
                             <div className="card-body">
                                 <div className="row align-items-center mb-3">
                                     <div className="col">
                                         <h4 className="card-title mb-0">
-                                          {property.name}
+                                          {item.title}
                                         </h4>
                                     </div>
                                     <div className="col-auto">
@@ -78,7 +73,7 @@ render(){
                                     </div>
                                 </div>
                                 <p className="mb-0 text-sm text-muted">
-                                Jet Setter drips luxury in 234 genuine diamonds, 18K gold-plated stainless steel case, and five timezone Swiss movements. A rich dial shows off gold tinted mother-of-pearl accents. Mounted on a matching stainless steel bracelet, adjustable for a custom fit. Travel the globe — and look luxury doing it..
+                                Jet Setter drips luxury in 234 genuine diamonds, 18K gold-plated stainless steel case..
                                 </p>
                             </div>
                         </Link>

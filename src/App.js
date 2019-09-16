@@ -8,6 +8,9 @@ import About from "./containers/About";
 import Contact from "./containers/Contact";
 import Store from "./containers/Store";
 import SingleProduct from "./containers/SingleProduct";
+import AddItem from "./components/Auth/AddItem";
+import Login from "./containers/Login";
+import Dashboard from "./components/Auth/Dashboard";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/store" component={Store} />
           <Route exact path="/item/:id" component={SingleProduct} />
+          <Route exact path="/add" component={AddItem} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/dashboard" component={Dashboard} />
         </Router>
       <Footer />
     </div>
