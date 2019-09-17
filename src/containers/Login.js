@@ -1,26 +1,25 @@
 import React, { Component } from 'react'
 
 export default class Login extends Component {
+
+  signIn = e => {
+    e.preventDefault();
+    this.props.history.push("/dashboard")
+  }
   render() {
     return (
-      <section className="section section-full section-top bg-light">
-        {/* Content */}
+      <section className="section section-full section-top bg-light pb-5">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-8 col-lg-6">
-              {/* Form */}
-              <form className="form-styled bg-white">
-                {/* Heading */}
+              <form onSubmit={this.signIn} className="form-styled bg-white">
                 <h4 className="text-center mb-4">
                   Welcome back
                 </h4>
-                {/* Subheading */}
                 <p className="text-center text-muted mb-5">
                   Please fill out the form below to sign in to your account.
                 </p>
-                {/* Email */}
                 <div className="form-group">
-                  {/* Email */}
                   <label>Email address</label>
                   <div className="input-group">
                     <input type="email" className="form-control order-1" />
@@ -35,9 +34,7 @@ export default class Login extends Component {
                     </div>
                   </div>
                 </div>
-                {/* Password */}
                 <div className="form-group">
-                  {/* Name */}
                   <label>Password</label>
                   <div className="input-group">
                     <input type="password" className="form-control order-1" />
@@ -52,10 +49,8 @@ export default class Login extends Component {
                     </div>
                   </div>
                 </div>
-                {/* Footer */}
                 <div className="form-row align-items-center">
                   <div className="col-md-auto">
-                    {/* Checkbox */}
                     <div className="custom-control custom-checkbox mb-3 mb-md-0">
                       <input type="checkbox" className="custom-control-input" id="sign-in-checkbox" />
                       <label className="custom-control-label" htmlFor="sign-in-checkbox">
@@ -64,18 +59,17 @@ export default class Login extends Component {
                     </div>
                   </div>
                   <div className="col-md">
-                    {/* Button */}
                     <div className="text-center text-md-right">
                       <button type="submit" className="btn btn-outline-primary">
                         Sign in now
                       </button>
                     </div>
                   </div>
-                </div> {/* / .form-row */}
+                </div>
               </form>
             </div>
-          </div> {/* / .row */}
-        </div> {/* / .container */}
+          </div>
+        </div>
       </section>
     )
   }

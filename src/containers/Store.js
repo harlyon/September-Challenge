@@ -10,7 +10,8 @@ const image = {
 
 class Store extends Component {
     state = {
-      items: []
+      items: [],
+      loading: true
     };
 
 
@@ -26,7 +27,8 @@ class Store extends Component {
         price
       })
     })
-    this.setState({ items });
+    this.setState({ items, loading: false });
+    sessionStorage.setItem("store", JSON.stringify(items))
   }
 
   componentDidMount() {
@@ -34,7 +36,7 @@ class Store extends Component {
   }
 
 render(){
-  const { items } = this.state
+  const { loading, items } = this.state
   return (
   <div>
     <section className="section pb-0">
@@ -54,6 +56,14 @@ render(){
     <div className="bg-triangle bg-triangle-dark bg-triangle-right bg-triangle-top" />
         <div className="container">
             <div className="row">
+            {
+              loading &&
+              <img
+                src="https://miro.medium.com/max/882/1*9EBHIOzhE1XfMYoKz1JcsQ.gif"
+                alt="Fetching Data ............."
+                style={{ width: "300px", margin: "50px auto", display: "block" }}
+              />
+            }
                 {items.map((item) =>
                 <div key={item.key} className="col-12 col-md-6 col-lg-4">
                     <div className="position-relative">

@@ -7,7 +7,6 @@ export default class AddItem extends Component {
     price: "",
     description: ""
   }
-  //this.ref = firebase.firestore().collection("properties");
 
   addItem = e => {
     e.preventDefault();
@@ -33,13 +32,9 @@ export default class AddItem extends Component {
   render() {
     return (
     <section className="section pb-5">
-      {/* Content */}
       <div className="container">
         <div className="row">
           <div className="col-md-2">
-            <h6 className="title">
-              Add Item Information
-            </h6>
             <h6 className="title">
               Add Item Information
             </h6>
@@ -90,10 +85,9 @@ export default class AddItem extends Component {
                     </div>
                   </div>
                 </div>
-              </div> {/* / .form-row */}
+              </div>
               <div className="form-row">
                 <div className="form-group col-12">
-                  {/* Message */}
                   <label>Item Description</label>
                   <textarea className="form-control"
                             name="description"
@@ -102,14 +96,12 @@ export default class AddItem extends Component {
                             rows={7}
                             />
                 </div>
-              </div> {/* / .form-row */}
+              </div>
               <div className="form-row">
                 <div className="col-12">
-                  {/* Submit */}
                   <button onClick={this.addItem} type="submit" className="btn btn-outline-primary">
                   Create Item
                   </button>
-                  {/* Reset */}
                   <button type="reset" className="btn btn-link">
                   Reset Form
                   </button>
@@ -117,8 +109,8 @@ export default class AddItem extends Component {
               </div>
             </form>
           </div>
-        </div> {/* / .row */}
-      </div> {/* / .container */}
+        </div>
+      </div>
     </section>
     )
   }
