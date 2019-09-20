@@ -1,18 +1,51 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
+import { Redirect } from "react-router-dom"
+import firebase from "../config/firebase"
 
 export default class Login extends Component {
-
-  signIn = e => {
-    e.preventDefault();
-    this.props.history.push("/dashboard")
+  state = {
+    email: "",
+    password: "",
+    redirect: false
   }
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(e.target.value)
+  };
+
+  validateInput = e => {
+    e.preventDefault();
+    if (this.state.email !== "" && this.state.password !== "") {
+      this.signIn();
+    } else {
+    alert("Error", "All fields must be filled in", "error");
+    }
+  };
+
+  signIn = () => {
+    firebase
+    .auth()
+    .signInWithEmailAndPassword(this.state.email, this.state.password)
+    .then(u => {
+      this.setState({ redirect: true });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
   render() {
+    const {email, password, redirect} = this.state
+    if(redirect){
+      return <Redirect to={"/dashboard"} />;
+    }
     return (
       <section className="section section-full section-top bg-light pb-5">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-8 col-lg-6">
-              <form onSubmit={this.signIn} className="form-styled bg-white">
+              <form onSubmit={this.validateInput} className="form-styled bg-white">
                 <h4 className="text-center mb-4">
                   Welcome back
                 </h4>
@@ -22,7 +55,12 @@ export default class Login extends Component {
                 <div className="form-group">
                   <label>Email address</label>
                   <div className="input-group">
-                    <input type="email" className="form-control order-1" />
+                    <input type="email"
+                            name="email"
+                            value={email}
+                            className="form-control order-1"
+                            onChange={this.handleChange}
+                          />
                     <div className="input-group-append order-0">
                       <div className="input-group-text">
                         <svg className="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -37,7 +75,12 @@ export default class Login extends Component {
                 <div className="form-group">
                   <label>Password</label>
                   <div className="input-group">
-                    <input type="password" className="form-control order-1" />
+                    <input type="password"
+                            className="form-control order-1"
+                            name="password"
+                            value={password}
+                            onChange={this.handleChange}
+                          />
                     <div className="input-group-append order-0">
                       <div className="input-group-text">
                         <svg className="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -50,14 +93,6 @@ export default class Login extends Component {
                   </div>
                 </div>
                 <div className="form-row align-items-center">
-                  <div className="col-md-auto">
-                    <div className="custom-control custom-checkbox mb-3 mb-md-0">
-                      <input type="checkbox" className="custom-control-input" id="sign-in-checkbox" />
-                      <label className="custom-control-label" htmlFor="sign-in-checkbox">
-                        Remember me
-                      </label>
-                    </div>
-                  </div>
                   <div className="col-md">
                     <div className="text-center text-md-right">
                       <button type="submit" className="btn btn-outline-primary">

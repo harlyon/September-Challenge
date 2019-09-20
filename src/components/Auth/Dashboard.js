@@ -1,13 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
+import Login from "../../containers/Login";
+import firebase from "../../config/firebase"
 
 const item = JSON.parse(sessionStorage.getItem("store"))
 export default class Dashboard extends Component {
   state = {
-    items: item
+    items: item,
+    user: ""
   }
+
+  authListener() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user });
+      } else {
+        this.setState({ user: null });
+      }
+    });
+  }
+
   render() {
-    const { items } = this.state
+    const { items, user } = this.state
     return (
+      <>
+      {
+        user ? (
       <section className="section">
         <div className="container">
           <div className="row">
@@ -76,6 +93,10 @@ export default class Dashboard extends Component {
           </div>
         </div>
       </section>
+      ):(
+      <Login />
+      )}
+      </>
     )
   }
 }
