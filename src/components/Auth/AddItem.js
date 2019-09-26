@@ -1,23 +1,15 @@
 import React, { Component } from "react"
 import firebase from "../../config/firebase"
 import Login from "../../containers/Login";
+import SideBar from "./SideBar";
 
+const user = JSON.parse(sessionStorage.getItem("user"))
 export default class AddItem extends Component {
   state = {
     title: "",
     price: "",
     description: "",
-    user: ""
-  }
-
-  authListener() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ user });
-      } else {
-        this.setState({ user: null });
-      }
-    });
+    user: user
   }
 
   addItem = e => {
@@ -50,11 +42,7 @@ export default class AddItem extends Component {
       <section className="section pb-5">
         <div className="container">
           <div className="row">
-            <div className="col-md-2">
-              <h6 className="title">
-                Add Item Information
-              </h6>
-            </div>
+          <SideBar />
             <div className="col-md-10">
               <h3 className="mb-4">
                 New Items? Add them to the <span className="text-primary">list</span>

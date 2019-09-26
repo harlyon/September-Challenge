@@ -6,12 +6,12 @@ export default class Login extends Component {
   state = {
     email: "",
     password: "",
-    redirect: false
+    redirect: false,
+    user: ""
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.value)
   };
 
   validateInput = e => {

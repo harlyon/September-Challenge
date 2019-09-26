@@ -1,18 +1,24 @@
 import React, { Component } from "react"
 import Login from "../../containers/Login";
 import firebase from "../../config/firebase"
+import SideBar from "./SideBar";
 
-const item = JSON.parse(sessionStorage.getItem("store"))
+const items = JSON.parse(sessionStorage.getItem("store"))
 export default class Dashboard extends Component {
   state = {
-    items: item,
+    items: items,
     user: ""
+  }
+
+  componentDidMount() {
+    this.authListener()
   }
 
   authListener() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({ user });
+        sessionStorage.setItem("user", JSON.stringify(user))
       } else {
         this.setState({ user: null });
       }
@@ -28,11 +34,7 @@ export default class Dashboard extends Component {
       <section className="section">
         <div className="container">
           <div className="row">
-          <div className="col-md-2">
-              <h6 className="title">
-                Your Dashboard
-              </h6>
-            </div>
+          <SideBar />
             <div className="col-md-10">
               <h3 className="mb-4">
                 Welcome
