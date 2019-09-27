@@ -27,6 +27,7 @@ class SingleProduct extends Component {
 
 render(){
   const { item } = this.state
+  console.log(item)
   return (
     <div>
       <section className="section pb-0">
@@ -39,11 +40,11 @@ render(){
               </p>
               {/* Heading */}
               <h3 className="mb-4">
-                Converse Chuck Taylor All Star Low Top
+                {item.title}
               </h3>
               {/* Text */}
               <p className="mb-5 text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                {item.description}
               </p>
               {/* Form */}
               <form className="mb-5 mb-md-0">

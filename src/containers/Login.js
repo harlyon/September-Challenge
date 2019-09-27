@@ -6,7 +6,6 @@ export default class Login extends Component {
   state = {
     email: "",
     password: "",
-    redirect: false,
     user: ""
   }
 
@@ -28,7 +27,7 @@ export default class Login extends Component {
     .auth()
     .signInWithEmailAndPassword(this.state.email, this.state.password)
     .then(u => {
-      this.setState({ redirect: true });
+      this.props.history.push('/dashboard')
     })
     .catch(error => {
       console.log(error);
@@ -36,10 +35,7 @@ export default class Login extends Component {
   }
 
   render() {
-    const {email, password, redirect} = this.state
-    if(redirect){
-      return <Redirect to={"/dashboard"} />;
-    }
+    const { email, password } = this.state
     return (
       <section className="section section-full section-top bg-light pb-5">
         <div className="container">

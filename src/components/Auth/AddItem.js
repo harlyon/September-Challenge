@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import FileUploader from "react-firebase-file-uploader";
 import firebase from "../../config/firebase"
 import Login from "../../containers/Login";
 import SideBar from "./SideBar";
@@ -9,15 +10,31 @@ export default class AddItem extends Component {
     title: "",
     price: "",
     description: "",
+    image: {
+      avatar: "",
+      isUploading: "",
+      progress: 0,
+      avatarURL: ""
+    },
     user: user
   }
 
   addItem = e => {
     e.preventDefault();
-    const { title, price, description } = this.state
+    const { title, price, description, image } = this.state
     firebase.firestore()
     .collection("items")
-    .add({ title, price, description})
+    .add({ 
+      title: "",
+      price: "",
+      description: "",
+      image: {
+        avatar: "",
+        isUploading: "",
+        progress: 0,
+        avatarURL: ""
+      },
+    })
     .then(docRef => {
       this.setState({title, price, description})
       this.props.history.push("/store");
@@ -27,6 +44,38 @@ export default class AddItem extends Component {
     });
     console.log("success")
   }
+
+  resetForm = e => {
+    e.preventDefault();
+    this.setState({ 
+      title: "",
+      price: "",
+      description: "",
+      image: {
+        avatar: "",
+        isUploading: "",
+        progress: 0,
+        avatarURL: ""
+      },
+    })
+  }
+
+  handleProgress = progress => {
+    this.setState({ image: {progress} });
+  }
+
+  handleUploadSuccess = filename => {
+    console.log(this.state.image);
+    this.setState({
+      image: { avatar: filename, progress: 100, isUploading: false }
+    });
+    firebase
+      .storage()
+      .ref("images")
+      .child(filename)
+      .getDownloadURL()
+      .then(url => this.setState({ image: { avatarURL: url } }));
+  };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -47,6 +96,44 @@ export default class AddItem extends Component {
               <h3 className="mb-4">
                 New Items? Add them to the <span className="text-primary">list</span>
               </h3>
+              <div class="text-center">
+                <FileUploader
+                  accept="image/*"
+                  name="avatar"
+                  randomizeFilename
+                  storageRef={firebase.storage().ref("images")}
+                  onUploadStart={this.handleUploadStart}
+                  onUploadError={this.handleUploadError}
+                  onUploadSuccess={this.handleUploadSuccess}
+                  onProgress={this.handleProgress}
+                />
+                <br />
+                <br />
+                <div className="fuzone">
+                    <span>
+                      <i className="image-fluid"> </i>
+                    </span>
+                    {this.state.image.isUploading && (
+                      <p>progress : {this.state.image.progress} </p>
+                    )}
+                    {this.state.image.progress && (
+                      <img
+                        src="https://miro.medium.com/max/882/1*9EBHIOzhE1XfMYoKz1JcsQ.gif"
+                        alt="Fetching Data ............."
+                        style={{ width: "300px", margin: "50px auto", display: "block" }}
+                      />
+                    )}
+                    {this.state.image.avatarURL ? (
+                      <div>
+                        <img
+                          style={{ height: "50%", width: "50%" }}
+                          src={this.state.image.avatarURL}
+                          alt="hry"
+                        />
+                      </div>
+                    ) : null}
+                </div>
+              </div>
               <form>
                 <div className="form-row">
                   <div className="form-group col-md-6">
@@ -57,7 +144,7 @@ export default class AddItem extends Component {
                               name="title"
                               value={title}
                               onChange={this.handleChange}
-                              />
+                      />
                       <div className="input-group-append order-0">
                         <div className="input-group-text">
                           <svg className="input-group-icon icon-offset icon icon-quote" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -77,7 +164,7 @@ export default class AddItem extends Component {
                               name="price"
                               value={price}
                               onChange={this.handleChange}
-                              />
+                      />
                       <div className="input-group-append order-0">
                         <div className="input-group-text">
                           <svg className="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -106,8 +193,8 @@ export default class AddItem extends Component {
                     <button onClick={this.addItem} type="submit" className="btn btn-outline-primary">
                     Create Item
                     </button>
-                    <button type="reset" className="btn btn-link">
-                    Reset Form
+                    <button onClick={this.resetForm} type="reset" className="btn btn-link">
+                      Reset Form
                     </button>
                   </div>
                 </div>

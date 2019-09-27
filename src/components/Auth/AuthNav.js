@@ -77,6 +77,11 @@ class AuthNav extends Component {
               </ul>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
+                  <a href="/dashboard" className="nav-link">
+                    Dashboard
+                  </a>
+                </li>
+                <li className="nav-item">
                   <a href="/" className="nav-link">
                     Home
                   </a>
