@@ -24,7 +24,7 @@ export default class AddItem extends Component {
     const { title, price, description, image } = this.state
     firebase.firestore()
     .collection("items")
-    .add({ 
+    .add({
       title: "",
       price: "",
       description: "",
@@ -36,7 +36,7 @@ export default class AddItem extends Component {
       },
     })
     .then(docRef => {
-      this.setState({title, price, description})
+      this.setState({title, price, description, image})
       this.props.history.push("/store");
     })
     .catch(error => {
@@ -47,7 +47,7 @@ export default class AddItem extends Component {
 
   resetForm = e => {
     e.preventDefault();
-    this.setState({ 
+    this.setState({
       title: "",
       price: "",
       description: "",

@@ -27,7 +27,6 @@ class SingleProduct extends Component {
 
 render(){
   const { item } = this.state
-  console.log(item)
   return (
     <div>
       <section className="section pb-0">
@@ -47,6 +46,12 @@ render(){
                 {item.description}
               </p>
               {/* Form */}
+              <button style={{ marginRight: "10px" }} className="btn btn-outline-danger btn-sm btn-circle">
+                delete
+              </button>
+              <button className="btn btn-outline-secondary btn-sm btn-circle">
+                edit
+              </button>
               <form className="mb-5 mb-md-0">
                 <div className="form-row">
                   <div className="col-12">

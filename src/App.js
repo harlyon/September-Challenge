@@ -11,6 +11,7 @@ import AddItem from "./components/Auth/AddItem";
 import Login from "./containers/Login";
 import Dashboard from "./components/Auth/Dashboard";
 import Nav from "./components/Auth/AuthNav";
+import EditProduct from "./containers/EditProduct";
 
 function App() {
   return (
