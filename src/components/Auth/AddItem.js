@@ -21,22 +21,22 @@ export default class AddItem extends Component {
 
   addItem = e => {
     e.preventDefault();
-    const { title, price, description, image } = this.state
+    const { title, price, image, description } = this.state
     firebase.firestore()
     .collection("items")
-    .add({
-      title: "",
-      price: "",
-      description: "",
-      image: {
-        avatar: "",
-        isUploading: "",
-        progress: 0,
-        avatarURL: ""
-      },
-    })
+    .add({ title, price, description, image })
     .then(docRef => {
-      this.setState({title, price, description, image})
+      this.setState({
+        title: "",
+        price: "",
+        description: "",
+        image: {
+          avatar: "",
+          isUploading: "",
+          progress: 0,
+          avatarURL: ""
+        },
+      })
       this.props.history.push("/store");
     })
     .catch(error => {

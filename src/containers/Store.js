@@ -18,12 +18,12 @@ class Store extends Component {
   allItems = querySnapshot => {
     const items = [];
     querySnapshot.forEach(doc => {
-      const { description, avatar, price, title } = doc.data();
+      const { description, image, price, title } = doc.data();
       items.push({
         key: doc.id,
         title,
         description,
-        avatar,
+        image,
         price
       })
     })
@@ -37,6 +37,7 @@ class Store extends Component {
 
 render(){
   const { loading, items } = this.state
+  console.log("ALL ITEMS",items)
   return (
   <div>
     <section className="section pb-0">
@@ -68,7 +69,7 @@ render(){
                 <div key={item.key} className="col-12 col-md-6 col-lg-4">
                     <div className="position-relative">
                         <Link className="card border-3 mb-3" to={`/item/${item.key}`}>
-                            <img src="https://simpleqode.bitbucket.io/incline/assets/img/83.jpg" alt="..." className="card-img" />
+                            <img src={item.image && item.image.avatarURL} alt="..." className="card-img" />
                             <div className="card-body">
                                 <div className="row align-items-center mb-3">
                                     <div className="col">
@@ -78,12 +79,12 @@ render(){
                                     </div>
                                     <div className="col-auto">
                                         <p className="mb-0 text-sm text-muted">
-                                            $70
+                                            {item.price}
                                         </p>
                                     </div>
                                 </div>
                                 <p className="mb-0 text-sm text-muted">
-                                Jet Setter drips luxury in 234 genuine diamonds, 18K gold-plated stainless steel case..
+                                  {item.description}
                                 </p>
                             </div>
                         </Link>

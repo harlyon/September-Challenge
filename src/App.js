@@ -26,6 +26,7 @@ function App() {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/add" component={AddItem} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/edit/:id" component={EditProduct} />
 
         </Router>
       <Footer />

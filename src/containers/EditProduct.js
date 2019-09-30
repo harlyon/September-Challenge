@@ -5,6 +5,7 @@ import FileUploader from "react-firebase-file-uploader";
 
 class EditProduct extends Component {
   state = {
+    key: '',
     title: '',
     price: '',
     description: '',
@@ -22,15 +23,11 @@ class EditProduct extends Component {
       if (doc.exist) {
         const item = doc.data();
         this.setState({
-          title: '',
-          price: '',
-          description: '',
-          image: {
-            avatar: '',
-            isUploading: '',
-            progress: 0,
-            avatarURL: ''
-          }
+          key: doc.id,
+          title: item.title,
+          price: item.price,
+          description: item.description,
+          image: item.image
         });
       }
     });
