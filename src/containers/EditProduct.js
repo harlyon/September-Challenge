@@ -5,7 +5,6 @@ import FileUploader from "react-firebase-file-uploader";
 
 class EditProduct extends Component {
   state = {
-    key: '',
     title: '',
     price: '',
     description: '',
@@ -19,8 +18,8 @@ class EditProduct extends Component {
 
   componentDidMount() {
     const ref = firebase.firestore().collection('items').doc(this.props.match.params.id);
-    ref.get().then((doc) => {
-      if (doc.exist) {
+    ref.get().then(doc => {
+      if (doc.exists) {
         const item = doc.data();
         this.setState({
           key: doc.id,
@@ -29,28 +28,35 @@ class EditProduct extends Component {
           description: item.description,
           image: item.image
         });
+      } else {
+        console.log("No document found");
       }
     });
   }
 
-  addItem = e => {
+  editItem = e => {
     e.preventDefault();
-    const { title, price, description, image } = this.state
-    firebase.firestore()
-    .collection("items")
-    .add({
-      title: "",
-      price: "",
-      description: "",
-      image: {
-        avatar: "",
-        isUploading: "",
-        progress: 0,
-        avatarURL: ""
-      },
+    const { title, price, description, image, key } = this.state
+    const update = firebase.firestore()
+    .collection("items").doc(key);
+    update.set({
+      title,
+      price,
+      description,
+      image
     })
     .then(docRef => {
-      this.setState({title, price, description, image})
+      this.setState({
+        title: '',
+        price: '',
+        description: '',
+        image: {
+          avatar: '',
+          isUploading: '',
+          progress: 0,
+          avatarURL: ''
+        },
+      })
       this.props.history.push("/store");
     })
     .catch(error => {
@@ -92,7 +98,7 @@ class EditProduct extends Component {
             <h3 className="mb-4">
               New Items? Add them to the <span className="text-primary">list</span>
             </h3>
-            <div class="text-center">
+            <div className="text-center">
               <FileUploader
                 accept="image/*"
                 name="avatar"
@@ -135,11 +141,12 @@ class EditProduct extends Component {
                 <div className="form-group col-md-6">
                   <label>Title</label>
                   <div className="input-group">
-                    <input type="text"
-                            className="form-control order-1"
-                            name="title"
-                            value={title}
-                            onChange={this.handleChange}
+                    <input
+                      type="text"
+                      className="form-control order-1"
+                      name="title"
+                      value={title}
+                      onChange={this.handleChange}
                     />
                     <div className="input-group-append order-0">
                       <div className="input-group-text">
@@ -155,11 +162,12 @@ class EditProduct extends Component {
                 <div className="form-group col-md-6">
                   <label>Price</label>
                   <div className="input-group">
-                    <input type="number"
-                            className="form-control order-1"
-                            name="price"
-                            value={price}
-                            onChange={this.handleChange}
+                    <input
+                      type="number"
+                      className="form-control order-1"
+                      name="price"
+                      value={price}
+                      onChange={this.handleChange}
                     />
                     <div className="input-group-append order-0">
                       <div className="input-group-text">
@@ -176,18 +184,19 @@ class EditProduct extends Component {
               <div className="form-row">
                 <div className="form-group col-12">
                   <label>Item Description</label>
-                  <textarea className="form-control"
-                            name="description"
-                            value={description}
-                            onChange={this.handleChange}
-                            rows={7}
-                            />
+                  <textarea
+                    className="form-control"
+                    name="description"
+                    value={description}
+                    onChange={this.handleChange}
+                    rows={7}
+                  />
                 </div>
               </div>
               <div className="form-row">
                 <div className="col-12">
-                  <button onClick={this.addItem} type="submit" className="btn btn-outline-primary">
-                    Edit Item
+                  <button onClick={this.editItem} type="submit" className="btn btn-outline-primary">
+                    Update Item
                   </button>
                 </div>
               </div>

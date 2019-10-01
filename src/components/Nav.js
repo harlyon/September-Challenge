@@ -78,11 +78,12 @@ const Nav = () => {
                   <span />
                 </span>
               </li>
-              <li className="nav-item">
-                <a href="/" className="nav-link">
-                  <i className="fas fa-shopping-cart mr-2" /> Cart
-                </a>
-              </li>
+              <li className="nav-item snipcart-summary">
+                  <a className="nav-link">
+                    <i className="fas fa-cart-arrow-down snipcart-checkout" aria-hidden="true" /> Cart
+                    (<span className="snipcart-total-items"></span>)
+                  </a>
+                </li>
               <li className="nav-item">
                 <a href="/login" className="btn btn-outline-secondary animate">
                   Sign In

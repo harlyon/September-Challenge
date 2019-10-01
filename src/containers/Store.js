@@ -79,12 +79,17 @@ render(){
                                     </div>
                                     <div className="col-auto">
                                         <p className="mb-0 text-sm text-muted">
-                                            {item.price}
+                                            $ {item.price}
                                         </p>
                                     </div>
                                 </div>
                                 <p className="mb-0 text-sm text-muted">
-                                  {item.description}
+                                  {item.description.length < 70
+                                    ?
+                                    `${item.description}`
+                                    :
+                                    `${item.description.substring(0,55)}...`
+                                    }
                                 </p>
                             </div>
                         </Link>

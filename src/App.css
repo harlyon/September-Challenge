@@ -1,11 +1,11 @@
 
 .fuzone {
   background: #f9f9f9 none repeat scroll 0 0;
-  border: 2px dashed #eeeeee;
+  border: 5px dashed #eeeeee;
   border-radius: 3px;
   cursor: pointer;
   display: inline-block;
-  min-height: 150px;
+  /* min-height: 150px; */
   position: relative;
   text-align: center;
   transition: all 0.3s linear 0s;

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import firebase from "../config/firebase";
 import { Link } from "react-router-dom";
 
-// const query = firebase.firestore().collections(items)
 
 class SingleProduct extends Component {
   state = {
-    item: {},
     key: "",
+    item: {},
+    id: "",
     user: {}
   };
 
@@ -76,18 +76,33 @@ render(){
                 $ {item.price}
               </p>
               {/* Form */}
-              <button style={{ marginRight: "10px" }} className="btn btn-outline-danger btn-sm btn-circle">
-                delete
-              </button>
-              <Link to={`/edit/${key}`} className="btn btn-outline-secondary btn-sm btn-circle">
-                edit
-              </Link>
+              {
+                user ? (
+                <>
+                  <button onClick={this.delete} className="btn btn-outline-danger btn-sm btn-circle mr-3">
+                    delete
+                  </button>
+                  <Link to={`/edit/${key}`} className="btn btn-outline-secondary btn-sm btn-circle">
+                    edit
+                  </Link>
+                </>
+                ):(
+                ""
+                )}
               <form className="mb-5 mb-md-0">
                 <div className="form-row">
                   <div className="col-12">
                     {/* Button */}
-                    <button className="btn btn-outline-primary btn-block mt-3">
-                      Add to cart
+                    <button
+                      className="btn btn-outline-primary btn-block mt-3 snipcart-add-item"
+                      data-item-id={key}
+                      data-item-image={item.image && item.image.avatarURL}
+                      data-item-name={item.title}
+                      data-item-price={item.price}
+                      data-item-description={item.description}
+                      data-item-url={'http://localhost:3002/'}
+                    >
+                      Add to cart ${item.price}
                     </button>
                   </div>
                 </div>
