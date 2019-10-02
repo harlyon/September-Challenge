@@ -30,7 +30,9 @@ export default class Dashboard extends Component {
     return (
       <>
       {
-        user ? (
+        !user ? (
+          <Login />
+          ):(
       <section className="section">
         <div className="container">
           <div className="row">
@@ -77,14 +79,14 @@ export default class Dashboard extends Component {
                   <div className="card">
                     <div className="card-body">
                       <div className="card-icon text-primary">
-                        <span className="icon icon-edit" />
+                        <span className="icon icon-tick" />
                       </div>
                       <h5 className="card-title">
                         All Items
                       </h5>
                       {items.map((each) =>
                         <li key={each.key} className="card-text text-muted">
-                        {each.title}
+                        {each.title} - ${each.price}
                       </li>
                       )}
                     </div>
@@ -95,8 +97,6 @@ export default class Dashboard extends Component {
           </div>
         </div>
       </section>
-      ):(
-      <Login />
       )}
       </>
     )

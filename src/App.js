@@ -23,10 +23,10 @@ function App() {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/store" component={Store} />
           <Route exact path="/item/:id" component={SingleProduct} />
-          <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/add" component={AddItem} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/edit/:id" component={EditProduct} />
+          <Route exact path="/dashboard" component={Dashboard} />
 
         </Router>
       <Footer />
