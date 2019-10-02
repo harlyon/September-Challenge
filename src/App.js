@@ -13,6 +13,7 @@ import Dashboard from "./components/Auth/Dashboard";
 import Nav from "./components/Auth/AuthNav";
 import EditProduct from "./containers/EditProduct";
 import Blog from "./containers/Blog";
+import BlogDetails from "./containers/BlogDetails";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/blog" component={Blog} />
           <Route exact path="/store" component={Store} />
+          <Route exact path="/blog/:id" component={BlogDetails} />
           <Route exact path="/item/:id" component={SingleProduct} />
           <Route exact path="/add" component={AddItem} />
           <Route exact path="/login" component={Login} />
