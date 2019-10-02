@@ -12,6 +12,7 @@ import Login from "./containers/Login";
 import Dashboard from "./components/Auth/Dashboard";
 import Nav from "./components/Auth/AuthNav";
 import EditProduct from "./containers/EditProduct";
+import Blog from "./containers/Blog";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={Main} />
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path="/blog" component={Blog} />
           <Route exact path="/store" component={Store} />
           <Route exact path="/item/:id" component={SingleProduct} />
           <Route exact path="/add" component={AddItem} />
