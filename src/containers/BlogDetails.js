@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class BlogDetails extends Component {
   state = {
     key: "",
-    item: {},
+    blog: {},
     id: "",
     user: {}
   };
