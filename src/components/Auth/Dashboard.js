@@ -7,7 +7,7 @@ const items = JSON.parse(sessionStorage.getItem("store"))
 export default class Dashboard extends Component {
   state = {
     items: items,
-    user: ""
+    user: {}
   }
 
   componentDidMount() {
@@ -75,7 +75,22 @@ export default class Dashboard extends Component {
                     </div>
                   </a>
                 </div>
-                <div className="col-md-12 pt-5">
+                <div className="col-md-6 pt-5">
+                  <a href="/addblog" className="card">
+                    <div className="card-body">
+                      <div className="card-icon text-primary">
+                        <span className="icon icon-edit" />
+                      </div>
+                      <h5 className="card-title">
+                        Add New Blog
+                      </h5>
+                      <p className="card-text text-muted">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <div className="col-md-6 pt-5">
                   <div className="card">
                     <div className="card-body">
                       <div className="card-icon text-primary">

@@ -66,7 +66,7 @@ class Blog extends Component {
                             </div>
                             <div className="col">
                               <p className="mb-0 text-xs text-muted">
-                                by <strong className="text-body">John Doe</strong> 5 hours ago
+                                by <strong className="text-body">Admin</strong>
                               </p>
                             </div>
                         </div>

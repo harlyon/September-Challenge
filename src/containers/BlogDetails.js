@@ -72,8 +72,7 @@ class BlogDetails extends Component {
                 </div>
                 <div className="col-auto">
                   <p className="mb-0 text-xs text-muted">
-                    by <strong className="text-body">Judy Doe</strong> 2 hours
-                    ago
+                    by <strong className="text-body">Admin</strong>
                   </p>
                 </div>
               </div>
