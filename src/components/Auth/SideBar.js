@@ -10,6 +10,9 @@ const SideBar = () => {
           <a className="text-uppercase text-xs mb-2" href="/add">
             Add Item
           </a>
+          <a className="text-uppercase text-xs mb-2" href="/addblog">
+            Add Blog
+          </a>
         </nav>
       </div>
   );
