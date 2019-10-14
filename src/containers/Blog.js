@@ -61,7 +61,7 @@ class Blog extends Component {
                         <div className="row align-items-center no-gutters mb-4">
                             <div className="col-auto">
                               <div className="avatar mr-3">
-                                <img src="assets/img/16.jpg" alt="..." className="img-cover rounded-circle" />
+                                <img src={blog.image && blog.image.avatarURL} alt="..." className="img-cover rounded-circle" />
                               </div>
                             </div>
                             <div className="col">
@@ -71,10 +71,16 @@ class Blog extends Component {
                             </div>
                         </div>
                         <h4>
-                          Enhance your brand potential with giant advertising
+                          {blog.title}
                         </h4>
                         <p className="mb-0 text-sm text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        {
+                          blog.description.length < 70
+                          ?
+                          `${blog.description}`
+                          :
+                          `${blog.description.substring(0,55)}...`
+                        }
                         </p>
                       </div>
                     </Link>
