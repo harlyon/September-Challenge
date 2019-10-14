@@ -54,7 +54,7 @@ class BlogDetails extends Component {
   };
 
   render() {
-    const { item, user, key } = this.state
+    const { blog, user, key } = this.state
     return (
       <section className="section pb-5">
         <div className="container">
@@ -64,7 +64,7 @@ class BlogDetails extends Component {
                 <div className="col-auto">
                   <div className="avatar mr-3">
                     <img
-                      src="https://simpleqode.bitbucket.io/incline/assets/img/56.jpg"
+                      src={blog.image && blog.image.avatarURL}
                       alt="..."
                       className="img-cover rounded-circle"
                     />
@@ -84,39 +84,30 @@ class BlogDetails extends Component {
           <div className="row">
             <div className="col-12">
               <img
-                src="https://simpleqode.bitbucket.io/incline/assets/img/56.jpg"
+                src={blog.image && blog.image.avatarURL}
                 alt="..."
                 className="img-fluid mb-3"
               />
               <p className="text-center text-sm text-muted mb-5">
-                Sint cum consectetur error mollitia at, eius illo. Deleniti,
-                magnam.
+                { blog.title }
               </p>
             </div>
           </div>
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10 col-xl-8">
-              <blockquote className="blockquote">
+              {/* <blockquote className="blockquote">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Harum labore molestiae voluptatibus officia quae aliquid
-                  aperiam nulla suscipit, eveniet distinctio. Officiis quis
-                  impedit quo nobis dolores architecto quos perferendis!
-                  Aliquam?
+                {
+                  blog !== undefined || blog.description.length < 70
+                  ?
+                  `${blog.description}`
+                  :
+                  `${blog.description.substring(0,55)}...`
+                }
                 </p>
-              </blockquote>
+              </blockquote> */}
               <p>
-                Lorem ipsum dolor sit amet,{" "}
-                <a href="#!">consectetur adipisicing</a> elit. Accusantium,
-                culpa iure ut quae. Consequuntur cumque voluptate assumenda
-                placeat ipsum odit veritatis cupiditate, ea quam eaque, maxime
-                nemo sint. In, fuga.
-              </p>
-              <p className="mb-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
-                rerum dolores modi numquam! Placeat consequatur quisquam, ad hic
-                dolore dolorum asperiores provident dolor, aspernatur expedita
-                excepturi consectetur ullam <a href="#!">magni quod</a>.
+                { blog.description }
               </p>
               {
                 user ? (

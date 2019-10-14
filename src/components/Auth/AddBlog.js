@@ -70,7 +70,7 @@ export default class AddBlog extends Component {
     firebase
       .storage()
       .ref("images")
-      .chile(filename)
+      .child(filename)
       .getDownloadURL()
       .then(url => this.setState({
         image: {
@@ -173,7 +173,7 @@ export default class AddBlog extends Component {
                 </div>
                 <div className="form-row">
                   <div className="col-12">
-                    <button onClick={this.addItem} type="submit" className="btn btn-outline-primary">
+                    <button onClick={this.addBlog} type="submit" className="btn btn-outline-primary">
                     Create Blog
                     </button>
                     <button onClick={this.resetForm} type="reset" className="btn btn-link">

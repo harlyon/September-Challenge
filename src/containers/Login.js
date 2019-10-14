@@ -1,12 +1,14 @@
 import React, { Component } from "react"
 import { Redirect } from "react-router-dom"
 import firebase from "../config/firebase"
+import Swal from 'sweetalert2'
 
 export default class Login extends Component {
   state = {
     email: "",
     password: "",
-    user: ""
+    user: "",
+    isLoading: false
   }
 
   handleChange = e => {
@@ -15,10 +17,13 @@ export default class Login extends Component {
 
   validateInput = e => {
     e.preventDefault();
-    if (this.state.email !== "" && this.state.password !== "") {
-      this.signIn();
+    if (this.state.email.trim() === "" || this.state.password.trim() === "") {
+      Swal.fire({
+        type: 'error',
+        text: 'Both fields are required!',
+      })
     } else {
-    alert("Error", "All fields must be filled in", "error");
+      this.signIn();
     }
   };
 
@@ -27,6 +32,16 @@ export default class Login extends Component {
     .auth()
     .signInWithEmailAndPassword(this.state.email, this.state.password)
     .then(u => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+      })
+      Toast.fire({
+        type: 'success',
+        title: 'Signed in successfully'
+      })
       this.props.history.push('/dashboard')
     })
     .catch(error => {
@@ -51,12 +66,13 @@ export default class Login extends Component {
                 <div className="form-group">
                   <label>Email address</label>
                   <div className="input-group">
-                    <input type="email"
-                            name="email"
-                            value={email}
-                            className="form-control order-1"
-                            onChange={this.handleChange}
-                          />
+                    <input
+                      type="email"
+                      name="email"
+                      value={email}
+                      className="form-control order-1"
+                      onChange={this.handleChange}
+                    />
                     <div className="input-group-append order-0">
                       <div className="input-group-text">
                         <svg className="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -71,12 +87,13 @@ export default class Login extends Component {
                 <div className="form-group">
                   <label>Password</label>
                   <div className="input-group">
-                    <input type="password"
-                            className="form-control order-1"
-                            name="password"
-                            value={password}
-                            onChange={this.handleChange}
-                          />
+                    <input
+                      type="password"
+                      className="form-control order-1"
+                      name="password"
+                      value={password}
+                      onChange={this.handleChange}
+                    />
                     <div className="input-group-append order-0">
                       <div className="input-group-text">
                         <svg className="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
