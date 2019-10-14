@@ -39,13 +39,13 @@ export default class Dashboard extends Component {
           <SideBar />
             <div className="col-md-10">
               <h3 className="mb-4">
-                Welcome
+                Welcome to your Dashboard
               </h3>
               <p className="text-muted mb-5">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               </p>
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <a href="#" className="card mb-3 mb-md-0">
                     <div className="card-body">
                       <div className="card-icon text-primary">
@@ -60,7 +60,7 @@ export default class Dashboard extends Component {
                     </div>
                   </a>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <a href="/add" className="card">
                     <div className="card-body">
                       <div className="card-icon text-primary">
@@ -70,12 +70,12 @@ export default class Dashboard extends Component {
                         Add New Item
                       </h5>
                       <p className="card-text text-muted">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        .
                       </p>
                     </div>
                   </a>
                 </div>
-                <div className="col-md-6 pt-5">
+                <div className="col-md-4">
                   <a href="/addblog" className="card">
                     <div className="card-body">
                       <div className="card-icon text-primary">
@@ -85,12 +85,12 @@ export default class Dashboard extends Component {
                         Add New Blog
                       </h5>
                       <p className="card-text text-muted">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        .
                       </p>
                     </div>
                   </a>
                 </div>
-                <div className="col-md-6 pt-5">
+                <div className="col-md-12 pt-4">
                   <div className="card">
                     <div className="card-body">
                       <div className="card-icon text-primary">

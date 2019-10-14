@@ -115,7 +115,7 @@ class BlogDetails extends Component {
                   <button onClick={this.delete} className="btn btn-outline-danger btn-sm btn-circle mr-3">
                     delete
                   </button>
-                  <Link to={`/edit/${key}`} className="btn btn-outline-secondary btn-sm btn-circle">
+                  <Link to={`/id/${key}`} className="btn btn-outline-secondary btn-sm btn-circle">
                     edit
                   </Link>
                 </>
