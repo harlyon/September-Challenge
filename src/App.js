@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/addblog" component={AddBlog} />
           <Route exact path="/store" component={Store} />
           <Route exact path="/blog/:id" component={BlogDetails} />
-          <Route exact path="/edit/:id" component={EditBlog} />
+          <Route exact path="/id/:id" component={EditBlog} />
           <Route exact path="/item/:id" component={SingleProduct} />
           <Route exact path="/add" component={AddItem} />
           <Route exact path="/login" component={Login} />
