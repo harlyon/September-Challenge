@@ -112,7 +112,7 @@ class AuthNav extends Component {
                   </span>
                 </li>
                 <li className="nav-item">
-                  <a onClick={this.logOut} href="/" className="btn btn-outline-secondary animate">
+                  <a onClick={this.logOut} className="btn btn-outline-secondary animate">
                     Log Out
                   </a>
                 </li>

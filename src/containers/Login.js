@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Redirect } from "react-router-dom"
 import firebase from "../config/firebase"
+import Loader from 'react-loader'
 import Swal from 'sweetalert2'
 
 export default class Login extends Component {
@@ -28,6 +29,7 @@ export default class Login extends Component {
   };
 
   signIn = () => {
+    this.setState({ isLoading: true })
     firebase
     .auth()
     .signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -50,13 +52,16 @@ export default class Login extends Component {
   }
 
   render() {
-    const { email, password } = this.state
+    const { email, password, isLoading } = this.state
     return (
       <section className="section section-full section-top bg-light pb-5">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-8 col-lg-6">
               <form onSubmit={this.validateInput} className="form-styled bg-white">
+                {
+                  isLoading && <Loader loaded={this.state.loaded} />
+                }
                 <h4 className="text-center mb-4">
                   Welcome back
                 </h4>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../config/firebase";
 import banner from "../image/store.jpg";
+import Loader from 'react-loader'
 
 const image = {
   backgroundImage: `url(${banner})`,
@@ -57,14 +58,9 @@ render(){
     <div className="bg-triangle bg-triangle-dark bg-triangle-right bg-triangle-top" />
         <div className="container">
             <div className="row">
-            {
-              loading &&
-              <img
-                src="https://miro.medium.com/max/882/1*9EBHIOzhE1XfMYoKz1JcsQ.gif"
-                alt="Fetching Data ............."
-                style={{ width: "300px", margin: "50px auto", display: "block" }}
-              />
-            }
+              {
+                loading && <Loader loaded={this.state.loaded} />
+                }
                 {items.map((item) =>
                 <div key={item.key} className="col-12 col-md-6 col-lg-4">
                     <div className="position-relative">
