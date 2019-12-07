@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import firebase from "../config/firebase";
 import { Link } from "react-router-dom";
+import Loader from 'react-loader'
 
 
 class SingleProduct extends Component {
@@ -8,7 +9,8 @@ class SingleProduct extends Component {
     key: "",
     item: {},
     id: "",
-    user: {}
+    user: {},
+    loading: true
   };
 
   authListener() {
@@ -31,7 +33,8 @@ class SingleProduct extends Component {
       if (doc.exists) {
         this.setState({
           item: doc.data(),
-          key: doc.id
+          key: doc.id,
+          loading: false
         });
       } else {
         console.log("No such document!");
@@ -39,7 +42,8 @@ class SingleProduct extends Component {
     });
   }
 
-  delete = (id) => {
+  delete = () => {
+    const id = this.state.key
     firebase
       .firestore()
       .collection("items")
@@ -55,13 +59,16 @@ class SingleProduct extends Component {
   }
 
 render(){
-  const { item, user, key } = this.state
-  console.log("it", item)
+  const { item, user, key, loading } = this.state
+  console.log("id", item)
   return (
     <div>
       <section className="section pb-0">
         <div className="container">
           <div className="row">
+            {
+              loading && <Loader loaded={this.state.loaded} />
+            }
             <div className="col-12 col-md-4 order-md-2">
               <h3 className="mb-4">
                 {item.title}

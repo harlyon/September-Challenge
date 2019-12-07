@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "../config/firebase";
 import { Link } from "react-router-dom";
 import blog from "../image/blog.jpg";
+import Loader from 'react-loader';
 
 const image = {
     backgroundImage: `url(${blog})`,
@@ -52,6 +53,9 @@ class Blog extends Component {
         </section>
         <section>
           <div className="container section pb-5">
+          {
+            loading && <Loader loaded={this.state.loaded} />
+          }
             <div className="row align-items-stretch">
             {
                 blogs.map(blog =>
