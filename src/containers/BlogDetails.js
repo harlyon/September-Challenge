@@ -38,7 +38,8 @@ class BlogDetails extends Component {
     });
   }
 
-  delete = id => {
+  delete = () => {
+    const id = this.state.key
     firebase
       .firestore()
       .collection("blog")
@@ -82,11 +83,11 @@ class BlogDetails extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-12">
+            <div className="col-12 text-center">
               <img
                 src={blog.image && blog.image.avatarURL}
                 alt="..."
-                className="img-fluid mb-3"
+                className="img-fluid mb-3 justify-content-center"
               />
               <p className="text-center text-sm text-muted mb-5">
                 { blog.title }
