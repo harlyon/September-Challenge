@@ -63,13 +63,13 @@ render(){
   console.log("id", item)
   return (
     <div>
-      <section className="section pb-0">
+      <section className="section">
         <div className="container">
           <div className="row">
             {
               loading && <Loader loaded={this.state.loaded} />
             }
-            <div className="col-12 col-md-4 order-md-2">
+            <div className="col-12 mt-4 col-md-6 order-md-2">
               <h3 className="mb-4">
                 {item.title}
               </h3>
@@ -80,7 +80,7 @@ render(){
                 $ {item.price}
               </p>
               {
-                user ? (
+                user && (
                 <>
                   <button onClick={this.delete} className="btn btn-outline-danger btn-sm btn-circle mr-3">
                     delete
@@ -89,8 +89,6 @@ render(){
                     edit
                   </Link>
                 </>
-                ):(
-                ""
                 )}
               <form className="mb-5 mb-md-0">
                 <div className="form-row">
@@ -102,7 +100,7 @@ render(){
                       data-item-name={item.title}
                       data-item-price={item.price}
                       data-item-description={item.description}
-                      data-item-url={'http://localhost:3002/item/key'}
+                      data-item-url={`/item/${key}`}
                     >
                       Add to cart ${item.price}
                     </button>
@@ -110,7 +108,7 @@ render(){
                 </div>
               </form>
             </div>
-            <div className="col-12 col-md-8 order-md-1">
+            <div className="col-12 col-md-6 order-md-1">
               <img src={item.image && item.image.avatarURL} alt="..." className="img-fluid mb-5" />
             </div>
           </div>

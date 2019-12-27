@@ -60,11 +60,11 @@ const Contact = () => {
                     </a>
                   </p>
                   <h5>
-                    Skype:
+                    Whatsapp:
                   </h5>
                   <p className="text-muted">
                     <a href="tel:1234567890">
-                      simpleqode.skype
+                      27-095-895-0
                     </a>
                   </p>
                 </div>

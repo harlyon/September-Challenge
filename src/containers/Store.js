@@ -57,6 +57,16 @@ render(){
     <div className="bg-triangle bg-triangle-dark bg-triangle-left bg-triangle-top" />
     <div className="bg-triangle bg-triangle-dark bg-triangle-right bg-triangle-top" />
         <div className="container">
+        <div className="row justify-content-center">
+              <div className="col-md-8 col-lg-6">
+                <h2 className="text-center mb-4">
+                  Featured Products
+                </h2>
+                <p className="text-center text-muted text-left mb-5">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo officiis odio repudiandae.
+                </p>
+              </div>
+            </div>
             <div className="row">
               {
                 loading && <Loader loaded={this.state.loaded} />
@@ -89,7 +99,10 @@ render(){
                                 </p>
                             </div>
                         </Link>
-                        <button className="btn btn-sm btn-circle btn-primary card-add" data-toggle="cart" data-action="add">
+                        <button
+                          className="btn btn-sm btn-circle btn-primary card-add" data-toggle="cart"
+                          data-action="add"
+                        >
                           <i className="fas fa-plus" />
                         </button>
                     </div>
