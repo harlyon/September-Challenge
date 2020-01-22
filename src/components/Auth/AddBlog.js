@@ -15,6 +15,22 @@ export default class AddBlog extends Component {
       progress: 0,
       avatarURL: ""
     },
+    user: {}
+  }
+
+  componentDidMount() {
+    this.authListener()
+  }
+
+  authListener() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user });
+        sessionStorage.setItem("user", JSON.stringify(user))
+      } else {
+        this.setState({ user: null });
+      }
+    });
   }
 
   addBlog = e => {
@@ -86,8 +102,11 @@ export default class AddBlog extends Component {
   ]
 
   render() {
-    const { title, description, image } = this.state
+    const { title, description, image, user } = this.state
     return(
+      <>
+      {
+      user ? (
       <section className="section pb-5">
         <div className="container">
           <div className="row">
@@ -186,6 +205,10 @@ export default class AddBlog extends Component {
           </div>
         </div>
       </section>
+      ) : (
+        <Login />
+      )}
+      </>
     );
   }
 }

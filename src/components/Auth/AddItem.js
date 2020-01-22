@@ -16,7 +16,22 @@ export default class AddItem extends Component {
       progress: 0,
       avatarURL: ""
     },
-    user: user
+    user: {}
+  }
+
+  componentDidMount() {
+    this.authListener()
+  }
+
+  authListener() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user });
+        sessionStorage.setItem("user", JSON.stringify(user))
+      } else {
+        this.setState({ user: null });
+      }
+    });
   }
 
   addItem = e => {
