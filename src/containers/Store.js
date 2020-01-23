@@ -84,7 +84,7 @@ render(){
                                         </h4>
                                     </div>
                                     <div className="col-auto">
-                                        <p className="mb-0 text-sm text-muted">
+                                        <p className="mb-0 text-sm text-muted price">
                                             $ {item.price}
                                         </p>
                                     </div>
