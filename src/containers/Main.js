@@ -5,30 +5,10 @@ import sideImage2 from "../image/9-1.jpg";
 const Main = () => {
   return (
     <div>
-        <section class="modal fade" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="modal-video-header" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-video modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title text-white" id="modal-video-header">
-                Video demonstration
-              </h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <video src="https://www.youtube.com/watch?v=9cnbg5SbIYM" class="img-fluid" controls></video>
-            </div>
-          </div>
-        </div>
-      </section>
       <section className="overflow-hidden">
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-6 offset-xl-1 order-md-2 section pt-md-0 pb-0">
-                <a href="#modal-video" className="btn btn-lg btn-circle btn-hero ml-4 bg-white shadow text-body d-none d-md-block" data-toggle="modal">
-                  <i className="fas fa-play" />
-                </a>
                 <div className="img-half">
                   <img src={sideImage} alt="..." className="img-cover img-incline-left" />
                 </div>
@@ -67,9 +47,6 @@ const Main = () => {
                   quasi ipsa quidem harum debitis aut alias dicta. Laudantium reprehenderit ea, suscipit nulla deleniti
                   excepturi repudiandae!
                 </p>
-                <a href="#modal-video" data-toggle="modal" className="btn btn-outline-primary btn-circle mr-3">
-                  <i className="fas fa-play" />
-                </a> Play video
               </div>
             </div>
           </div>
