@@ -77,7 +77,7 @@ render(){
                 {item.description}
               </p>
                 <p className="font-weight-medium text-xs text-uppercase text-primary">
-                {'$' + item.price}
+                {`${'$' + item.price}`}
               </p>
               {
                 user && (
@@ -102,7 +102,7 @@ render(){
                       data-item-description={item.description}
                       data-item-url={`/item/${key}`}
                     >
-                      Add to cart {'$' + item.price}
+                      Add to cart {`${'$' + item.price}`}
                     </button>
                   </div>
                 </div>
