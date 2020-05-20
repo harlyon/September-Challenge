@@ -63,12 +63,12 @@ render(){
   console.log("id", item)
   return (
     <div>
+      {
+        loading && <Loader loaded={this.state.loaded} />
+      }
       <section className="section">
         <div className="container">
           <div className="row">
-            {
-              loading && <Loader loaded={this.state.loaded} />
-            }
             <div className="col-12 mt-4 col-md-6 order-md-2">
               <h3 className="mb-4">
                 {item.title}
@@ -93,6 +93,7 @@ render(){
               <form className="mb-5 mb-md-0">
                 <div className="form-row">
                   <div className="col-12">
+                    {item && (
                     <button
                       className="btn btn-outline-primary btn-block mt-3 snipcart-add-item"
                       data-item-id={key}
@@ -104,6 +105,7 @@ render(){
                     >
                       Add to cart {`${'$' + item.price}`}
                     </button>
+                    )}
                   </div>
                 </div>
               </form>
