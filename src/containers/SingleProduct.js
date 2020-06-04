@@ -96,12 +96,12 @@ render(){
                     {item && (
                     <button
                       className="btn btn-outline-primary btn-block mt-3 snipcart-add-item"
-                      data-item-id={item.key}
+                      data-item-id={key}
                       data-item-image={item.image && item.image.avatarURL}
                       data-item-name={item.title}
                       data-item-price={item.price}
                       data-item-description={item.description}
-                      data-item-url={'/'}
+                      data-item-url={`https://september-challenge.now.sh/`}
                     >
                       Add to cart {`${'$' + item.price}`}
                     </button>
