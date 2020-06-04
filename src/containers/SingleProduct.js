@@ -96,7 +96,7 @@ render(){
                     {item && (
                     <button
                       className="btn btn-outline-primary btn-block mt-3 snipcart-add-item"
-                      data-item-id={key}
+                      data-item-id={item.key}
                       data-item-image={item.image && item.image.avatarURL}
                       data-item-name={item.title}
                       data-item-price={item.price}
