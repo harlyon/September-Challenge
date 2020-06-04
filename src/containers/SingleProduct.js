@@ -101,7 +101,7 @@ render(){
                       data-item-name={item.title}
                       data-item-price={item.price}
                       data-item-description={item.description}
-                      data-item-url={`/`}
+                      data-item-url={`https://september-challenge.now.sh/`}
                     >
                       Add to cart {`${'$' + item.price}`}
                     </button>
