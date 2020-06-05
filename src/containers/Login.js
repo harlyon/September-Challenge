@@ -67,8 +67,8 @@ export default class Login extends Component {
                 </h4>
                 <p className="text-center text-muted mb-5">
                   Please fill out the form below to sign in to your account. <br />
-                  Email: admin@gmail.com
-                  Password: string
+                  <strong>Email: admin@gmail.com</strong> <br />
+                  <strong>Password: string</strong>
                 </p>
                 <div className="form-group">
                   <label>Email address</label>
